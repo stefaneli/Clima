@@ -21,7 +21,6 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
      
         searchTextField.delegate = self
-        
     }
 
     @IBAction func searchPressed(_ sender: UIButton) {
