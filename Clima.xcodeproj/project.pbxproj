@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302000F4243D189D0082717C /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302000F3243D189D0082717C /* WeatherModel.swift */; };
 		307B6AD72438B4D200830B6F /* WeatherMng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B6AD62438B4D200830B6F /* WeatherMng.swift */; };
 		307B6AD92439021500830B6F /* WatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B6AD82439021500830B6F /* WatherData.swift */; };
 		ADAA27B1231BBFAF00365194 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA27B0231BBFAF00365194 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		302000F3243D189D0082717C /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherModel.swift; path = Clima/Controller/WeatherModel.swift; sourceTree = SOURCE_ROOT; };
 		307B6AD62438B4D200830B6F /* WeatherMng.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMng.swift; sourceTree = SOURCE_ROOT; };
 		307B6AD82439021500830B6F /* WatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatherData.swift; sourceTree = SOURCE_ROOT; };
 		ADAA27AD231BBFAF00365194 /* Clima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 		ADAA27CA231BC3FA00365194 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				302000F3243D189D0082717C /* WeatherModel.swift */,
 				307B6AD62438B4D200830B6F /* WeatherMng.swift */,
 				307B6AD82439021500830B6F /* WatherData.swift */,
 			);
@@ -180,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302000F4243D189D0082717C /* WeatherModel.swift in Sources */,
 				307B6AD92439021500830B6F /* WatherData.swift in Sources */,
 				ADAA27B5231BBFAF00365194 /* WeatherViewController.swift in Sources */,
 				307B6AD72438B4D200830B6F /* WeatherMng.swift in Sources */,
