@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol  WeatherManagerDelegate {
-    func didUpdateWeather(weather: WeatherModel)
+    func didUpdateWeather(_ weatherManager: WeatherMng, weather: WeatherModel)
+    func didFailWithError(error: Error)
 }
 
 struct WeatherMng {
@@ -20,10 +22,17 @@ struct WeatherMng {
     func fetchWeather (cityName: String) {
         let urlString = "\(weatherURL)&q=\(cityName)"
         print(urlString)
-        performRequest(urlString: urlString)
+        performRequest(with: urlString)
     }
     
-    func performRequest (urlString: String) {
+    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        
+        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
+        performRequest(with: urlString)
+        
+    }
+    
+    func performRequest (with urlString: String) {
         
         if let url = URL(string: urlString) {
             
@@ -31,13 +40,13 @@ struct WeatherMng {
             
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
-                    print(error!)
+                    self.delegate?.didFailWithError(error: error!)
                     return
                 }
                 
                 if let safeData = data {
-                    if let weather =  self.parsJson(weatherData: safeData) {
-                        self.delegate?.didUpdateWeather(weather: weather)
+                    if let weather =  self.parsJson(safeData) {
+                        self.delegate?.didUpdateWeather(self, weather: weather)
                     }
                 }
             }
@@ -45,7 +54,7 @@ struct WeatherMng {
         }
     }
     
-    func parsJson(weatherData: Data) -> WeatherModel? {
+    func parsJson(_ weatherData: Data) -> WeatherModel? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
@@ -55,11 +64,9 @@ struct WeatherMng {
             
             let weather = WeatherModel(conditionId: id, cityName: name, temperature: tem)
             return weather
-  
-            print(weather.temperatureString)
             
         } catch {
-            print(error)
+            delegate?.didFailWithError(error: error)
             return nil
         }
         
